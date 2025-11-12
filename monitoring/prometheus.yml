@@ -1,0 +1,20 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'go-fiber-app'
+    static_configs:
+      - targets:
+          - 'go-app1:8091'
+          - 'go-app2:8091'
+          - 'go-app3:8091'
+    metrics_path: /metrics
+    scheme: http
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
