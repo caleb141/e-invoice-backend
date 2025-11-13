@@ -1,11 +1,11 @@
 package callback
 
 import (
-	"einvoice-access-point/external/zoho"
-	"einvoice-access-point/internal/services/token"
-	"einvoice-access-point/internal/services/webhooks"
-	"einvoice-access-point/pkg/database"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/external/zoho"
+	"e-invoicing/internal/services/token"
+	"e-invoicing/internal/services/webhooks"
+	"e-invoicing/pkg/database"
+	"e-invoicing/pkg/utility"
 	"fmt"
 	"log"
 	"net/http"

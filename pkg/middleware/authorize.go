@@ -1,10 +1,10 @@
 package middleware
 
 import (
-	authRepo "einvoice-access-point/internal/repository/auth"
-	"einvoice-access-point/pkg/config"
-	inst "einvoice-access-point/pkg/dbinit"
-	"einvoice-access-point/pkg/utility"
+	authRepo "e-invoicing/internal/repository/auth"
+	"e-invoicing/pkg/config"
+	inst "e-invoicing/pkg/dbinit"
+	"e-invoicing/pkg/utility"
 	"strings"
 
 	"github.com/gofiber/fiber/v2"

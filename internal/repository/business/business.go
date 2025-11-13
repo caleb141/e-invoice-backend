@@ -1,9 +1,9 @@
 package business
 
 import (
-	"einvoice-access-point/pkg/database"
-	"einvoice-access-point/pkg/models"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/pkg/database"
+	"e-invoicing/pkg/models"
+	"e-invoicing/pkg/utility"
 
 	"gorm.io/gorm"
 )

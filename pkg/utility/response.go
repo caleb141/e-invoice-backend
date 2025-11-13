@@ -1,7 +1,7 @@
 package utility
 
 import (
-	"einvoice-access-point/pkg/models"
+	"e-invoicing/pkg/models"
 	"fmt"
 	"net/http"
 	"reflect"

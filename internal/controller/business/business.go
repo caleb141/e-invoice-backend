@@ -1,9 +1,9 @@
 package business
 
 import (
-	"einvoice-access-point/internal/services/business"
-	"einvoice-access-point/pkg/database"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/internal/services/business"
+	"e-invoicing/pkg/database"
+	"e-invoicing/pkg/utility"
 	"net/http"
 
 	"github.com/go-playground/validator/v10"

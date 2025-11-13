@@ -1,10 +1,10 @@
 package v1
 
 import (
-	"einvoice-access-point/internal/controller/invoice"
-	"einvoice-access-point/pkg/database"
-	"einvoice-access-point/pkg/middleware"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/internal/controller/invoice"
+	"e-invoicing/pkg/database"
+	"e-invoicing/pkg/middleware"
+	"e-invoicing/pkg/utility"
 	"fmt"
 
 	"github.com/go-playground/validator/v10"

@@ -1,7 +1,7 @@
 package invoice
 
 import (
-	"einvoice-access-point/external/firs_models"
+	"e-invoicing/external/firs_models"
 	"fmt"
 )
 

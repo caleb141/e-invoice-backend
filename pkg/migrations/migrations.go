@@ -1,7 +1,7 @@
 package migrations
 
 import (
-	"einvoice-access-point/pkg/models"
+	"e-invoicing/pkg/models"
 )
 
 func AuthMigrationModels() []interface{} {

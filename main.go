@@ -17,12 +17,12 @@ import (
 
 	"github.com/go-playground/validator/v10"
 
-	v1 "einvoice-access-point/api/v1"
-	"einvoice-access-point/pkg/config"
-	"einvoice-access-point/pkg/database"
-	"einvoice-access-point/pkg/database/postgresql"
-	"einvoice-access-point/pkg/migrations"
-	"einvoice-access-point/pkg/utility"
+	v1 "e-invoicing/api/v1"
+	"e-invoicing/pkg/config"
+	"e-invoicing/pkg/database"
+	"e-invoicing/pkg/database/postgresql"
+	"e-invoicing/pkg/migrations"
+	"e-invoicing/pkg/utility"
 )
 
 func main() {

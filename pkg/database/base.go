@@ -1,8 +1,8 @@
 package database
 
 import (
-	"einvoice-access-point/pkg/config"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/pkg/config"
+	"e-invoicing/pkg/utility"
 
 	"gorm.io/gorm"
 )

@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"einvoice-access-point/pkg/config"
-	"einvoice-access-point/pkg/models"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/pkg/config"
+	"e-invoicing/pkg/models"
+	"e-invoicing/pkg/utility"
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"

@@ -1,10 +1,10 @@
 package invoice
 
 import (
-	"einvoice-access-point/external/firs_models"
-	"einvoice-access-point/internal/services/invoice"
-	"einvoice-access-point/pkg/middleware"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/external/firs_models"
+	"e-invoicing/internal/services/invoice"
+	"e-invoicing/pkg/middleware"
+	"e-invoicing/pkg/utility"
 
 	"github.com/gofiber/fiber/v2"
 )

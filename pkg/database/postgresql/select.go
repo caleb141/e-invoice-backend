@@ -6,7 +6,7 @@ import (
 	"math"
 	"strconv"
 
-	"einvoice-access-point/pkg/database"
+	"e-invoicing/pkg/database"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"

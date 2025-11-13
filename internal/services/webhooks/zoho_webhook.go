@@ -1,13 +1,13 @@
 package webhooks
 
 import (
-	"einvoice-access-point/external/zoho"
-	businessRepository "einvoice-access-point/internal/repository/business"
-	repository "einvoice-access-point/internal/repository/invoice"
-	"einvoice-access-point/internal/services/token"
-	inst "einvoice-access-point/pkg/dbinit"
-	"einvoice-access-point/pkg/models"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/external/zoho"
+	businessRepository "e-invoicing/internal/repository/business"
+	repository "e-invoicing/internal/repository/invoice"
+	"e-invoicing/internal/services/token"
+	inst "e-invoicing/pkg/dbinit"
+	"e-invoicing/pkg/models"
+	"e-invoicing/pkg/utility"
 	"encoding/json"
 	"errors"
 	"fmt"

@@ -1,9 +1,9 @@
 package invoice
 
 import (
-	"einvoice-access-point/external/zoho"
-	services "einvoice-access-point/internal/services/webhooks"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/external/zoho"
+	services "e-invoicing/internal/services/webhooks"
+	"e-invoicing/pkg/utility"
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"

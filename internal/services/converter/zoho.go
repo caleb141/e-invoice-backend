@@ -1,9 +1,9 @@
 package converter
 
 import (
-	"einvoice-access-point/external/firs_models"
-	"einvoice-access-point/external/zoho"
-	"einvoice-access-point/pkg/utility"
+	"e-invoicing/external/firs_models"
+	"e-invoicing/external/zoho"
+	"e-invoicing/pkg/utility"
 	"fmt"
 	"time"
 )
