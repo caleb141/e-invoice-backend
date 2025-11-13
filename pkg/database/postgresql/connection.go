@@ -1,13 +1,13 @@
 package postgresql
 
 import (
-	"e-invoicing/pkg/config"
-	"e-invoicing/pkg/database"
+	"einvoice-access-point/pkg/config"
+	"einvoice-access-point/pkg/database"
 	"fmt"
 	"log"
 	"os"
 
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/pkg/utility"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

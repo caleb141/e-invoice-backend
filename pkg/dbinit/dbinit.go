@@ -1,8 +1,8 @@
 package dbinit
 
 import (
-	"e-invoicing/pkg/database/postgresql"
-	red "e-invoicing/pkg/database/redis"
+	"einvoice-access-point/pkg/database/postgresql"
+	red "einvoice-access-point/pkg/database/redis"
 
 	"github.com/go-redis/redis/v8"
 	"gorm.io/gorm"

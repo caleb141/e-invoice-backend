@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"e-invoicing/pkg/config"
+	"einvoice-access-point/pkg/config"
 	"log"
 	"strconv"
 	"time"

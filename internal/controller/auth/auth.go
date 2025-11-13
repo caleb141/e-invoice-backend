@@ -1,11 +1,11 @@
 package auth
 
 import (
-	"e-invoicing/internal/services/auth"
-	"e-invoicing/pkg/database"
-	"e-invoicing/pkg/middleware"
-	"e-invoicing/pkg/models"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/internal/services/auth"
+	"einvoice-access-point/pkg/database"
+	"einvoice-access-point/pkg/middleware"
+	"einvoice-access-point/pkg/models"
+	"einvoice-access-point/pkg/utility"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"

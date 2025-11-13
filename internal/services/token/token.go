@@ -1,10 +1,10 @@
 package token
 
 import (
-	"e-invoicing/external/zoho"
-	repository "e-invoicing/internal/repository/token"
-	inst "e-invoicing/pkg/dbinit"
-	"e-invoicing/pkg/models"
+	"einvoice-access-point/external/zoho"
+	repository "einvoice-access-point/internal/repository/token"
+	inst "einvoice-access-point/pkg/dbinit"
+	"einvoice-access-point/pkg/models"
 	"errors"
 	"time"
 

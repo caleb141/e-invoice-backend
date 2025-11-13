@@ -1,8 +1,8 @@
 package business
 
 import (
-	repository "e-invoicing/internal/repository/business"
-	inst "e-invoicing/pkg/dbinit"
+	repository "einvoice-access-point/internal/repository/business"
+	inst "einvoice-access-point/pkg/dbinit"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"

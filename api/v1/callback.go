@@ -1,9 +1,9 @@
 package v1
 
 import (
-	"e-invoicing/internal/controller/callback"
-	"e-invoicing/pkg/database"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/internal/controller/callback"
+	"einvoice-access-point/pkg/database"
+	"einvoice-access-point/pkg/utility"
 	"fmt"
 
 	"github.com/go-playground/validator/v10"

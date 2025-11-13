@@ -1,7 +1,7 @@
 package config
 
 import (
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/pkg/utility"
 	"log"
 
 	"github.com/mitchellh/mapstructure"

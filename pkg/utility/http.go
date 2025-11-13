@@ -2,7 +2,7 @@ package utility
 
 import (
 	"bytes"
-	"e-invoicing/pkg/models"
+	"einvoice-access-point/pkg/models"
 	"encoding/json"
 	"fmt"
 	"io"

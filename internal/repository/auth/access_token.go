@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"e-invoicing/pkg/database"
-	"e-invoicing/pkg/models"
+	"einvoice-access-point/pkg/database"
+	"einvoice-access-point/pkg/models"
 	"fmt"
 	"net/http"
 )

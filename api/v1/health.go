@@ -1,9 +1,9 @@
 package v1
 
 import (
-	"e-invoicing/internal/controller/health"
-	"e-invoicing/pkg/database"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/internal/controller/health"
+	"einvoice-access-point/pkg/database"
+	"einvoice-access-point/pkg/utility"
 	"fmt"
 
 	"github.com/go-playground/validator/v10"

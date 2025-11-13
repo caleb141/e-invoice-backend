@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"e-invoicing/external/firs"
-	"e-invoicing/external/firs_models"
-	"e-invoicing/pkg/models"
+	"einvoice-access-point/external/firs"
+	"einvoice-access-point/external/firs_models"
+	"einvoice-access-point/pkg/models"
 	"fmt"
 )
 

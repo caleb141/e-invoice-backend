@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql/driver"
-	"e-invoicing/pkg/common"
+	"einvoice-access-point/pkg/common"
 	"encoding/json"
 	"fmt"
 	"time"

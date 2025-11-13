@@ -1,14 +1,14 @@
 package webhooks
 
 import (
-	"e-invoicing/external/firs_models"
-	"e-invoicing/external/zoho"
-	repository "e-invoicing/internal/repository/invoice"
-	"e-invoicing/internal/services/converter"
-	"e-invoicing/internal/services/invoice"
-	inst "e-invoicing/pkg/dbinit"
-	"e-invoicing/pkg/models"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/external/firs_models"
+	"einvoice-access-point/external/zoho"
+	repository "einvoice-access-point/internal/repository/invoice"
+	"einvoice-access-point/internal/services/converter"
+	"einvoice-access-point/internal/services/invoice"
+	inst "einvoice-access-point/pkg/dbinit"
+	"einvoice-access-point/pkg/models"
+	"einvoice-access-point/pkg/utility"
 	"fmt"
 
 	"gorm.io/gorm"

@@ -1,10 +1,10 @@
 package health
 
 import (
-	"e-invoicing/internal/services/ping"
-	"e-invoicing/pkg/database"
-	"e-invoicing/pkg/models"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/internal/services/ping"
+	"einvoice-access-point/pkg/database"
+	"einvoice-access-point/pkg/models"
+	"einvoice-access-point/pkg/utility"
 	"fmt"
 
 	"github.com/go-playground/validator/v10"

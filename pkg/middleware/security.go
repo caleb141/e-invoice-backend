@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"e-invoicing/pkg/config"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/pkg/config"
+	"einvoice-access-point/pkg/utility"
 	"errors"
 	"time"
 

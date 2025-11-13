@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"e-invoicing/external/firs_models"
-	"e-invoicing/internal/services/entity"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/external/firs_models"
+	"einvoice-access-point/internal/services/entity"
+	"einvoice-access-point/pkg/utility"
 
 	"github.com/gofiber/fiber/v2"
 )

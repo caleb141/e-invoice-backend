@@ -1,11 +1,11 @@
 package v1
 
 import (
-	_ "e-invoicing/docs"
-	"e-invoicing/pkg/config"
-	"e-invoicing/pkg/database"
-	"e-invoicing/pkg/middleware"
-	"e-invoicing/pkg/utility"
+	_ "einvoice-access-point/docs"
+	"einvoice-access-point/pkg/config"
+	"einvoice-access-point/pkg/database"
+	"einvoice-access-point/pkg/middleware"
+	"einvoice-access-point/pkg/utility"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/goccy/go-json"

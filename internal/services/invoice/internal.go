@@ -1,10 +1,10 @@
 package invoice
 
 import (
-	"e-invoicing/external/firs_models"
-	repository "e-invoicing/internal/repository/invoice"
-	inst "e-invoicing/pkg/dbinit"
-	"e-invoicing/pkg/models"
+	"einvoice-access-point/external/firs_models"
+	repository "einvoice-access-point/internal/repository/invoice"
+	inst "einvoice-access-point/pkg/dbinit"
+	"einvoice-access-point/pkg/models"
 	"encoding/json"
 	"fmt"
 	"time"

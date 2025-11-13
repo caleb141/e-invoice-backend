@@ -1,8 +1,8 @@
 package firs
 
 import (
-	"e-invoicing/external/firs_models"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/external/firs_models"
+	"einvoice-access-point/pkg/utility"
 	"encoding/json"
 	"fmt"
 )

@@ -1,7 +1,7 @@
 package migrations
 
 import (
-	"e-invoicing/pkg/database"
+	"einvoice-access-point/pkg/database"
 	"fmt"
 
 	"gorm.io/gorm"

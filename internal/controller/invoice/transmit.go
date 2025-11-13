@@ -1,9 +1,9 @@
 package invoice
 
 import (
-	"e-invoicing/internal/services/invoice"
-	"e-invoicing/pkg/models"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/internal/services/invoice"
+	"einvoice-access-point/pkg/models"
+	"einvoice-access-point/pkg/utility"
 
 	"github.com/gofiber/fiber/v2"
 )

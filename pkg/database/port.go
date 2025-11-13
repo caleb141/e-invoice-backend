@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strconv"
 
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/pkg/utility"
 )
 
 func ResolvePortParsing(port string, logger *utility.Logger) string {

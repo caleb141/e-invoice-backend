@@ -1,9 +1,9 @@
 package zoho
 
 import (
-	"e-invoicing/pkg/config"
-	"e-invoicing/pkg/models"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/pkg/config"
+	"einvoice-access-point/pkg/models"
+	"einvoice-access-point/pkg/utility"
 	"fmt"
 )
 

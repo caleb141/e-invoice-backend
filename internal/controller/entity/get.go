@@ -1,10 +1,10 @@
 package entity
 
 import (
-	"e-invoicing/internal/services/entity"
-	"e-invoicing/pkg/database"
-	"e-invoicing/pkg/models"
-	"e-invoicing/pkg/utility"
+	"einvoice-access-point/internal/services/entity"
+	"einvoice-access-point/pkg/database"
+	"einvoice-access-point/pkg/models"
+	"einvoice-access-point/pkg/utility"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"

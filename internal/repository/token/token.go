@@ -1,8 +1,8 @@
 package token
 
 import (
-	"e-invoicing/pkg/database"
-	"e-invoicing/pkg/models"
+	"einvoice-access-point/pkg/database"
+	"einvoice-access-point/pkg/models"
 	"time"
 )
 
