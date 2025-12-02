@@ -146,6 +146,8 @@ definitions:
         items:
           $ref: '#/definitions/firs_models.InvoiceLine'
         type: array
+      invoice_number:
+        type: string
       invoice_type_code:
         type: string
       irn:
@@ -1273,6 +1275,34 @@ paths:
       summary: Update Invoice
       tags:
       - Invoice
+  /invoice/upload:
+    post:
+      consumes:
+      - application/json
+      description: Receives invoice data as a json
+      parameters:
+      - description: Invoice Payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/firs_models.InvoiceRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Invoice created successfully
+          schema:
+            $ref: '#/definitions/models.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/models.Response'
+      security:
+      - BearerAuth: []
+      summary: Initializes invoice creation in one go
+      tags:
+      - Internal Invoice
   /invoice/validate:
     post:
       consumes:

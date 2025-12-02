@@ -1448,6 +1448,51 @@ const docTemplate = `{
                 }
             }
         },
+        "/invoice/upload": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Receives invoice data as a json",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Internal Invoice"
+                ],
+                "summary": "Initializes invoice creation in one go",
+                "parameters": [
+                    {
+                        "description": "Invoice Payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/firs_models.InvoiceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Invoice created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/models.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/models.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/invoice/validate": {
             "post": {
                 "security": [
@@ -1881,6 +1926,9 @@ const docTemplate = `{
                     "items": {
                         "$ref": "#/definitions/firs_models.InvoiceLine"
                     }
+                },
+                "invoice_number": {
+                    "type": "string"
                 },
                 "invoice_type_code": {
                     "type": "string"
