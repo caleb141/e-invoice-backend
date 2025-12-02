@@ -207,3 +207,52 @@ func (base *Controller) DeleteInvoice(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 
 }
+
+// UploadInvoice godoc
+// @Summary Initializes invoice creation in one go
+// @Description Receives invoice data as a json
+// @Tags Internal Invoice
+// @Accept json
+// @Produce json
+// @Security BearerAuth
+// @Param   payload  body  firs_models.InvoiceRequest  true  "Invoice Payload"
+// @Success 200 {object} models.Response "Invoice created successfully"
+// @Failure 400 {object} models.Response "Bad request"
+// @Router /invoice/upload [post]
+func (base *Controller) UploadInvoice(c *fiber.Ctx) error {
+
+	var req firs_models.InvoiceRequest
+
+	err := c.BodyParser(&req)
+	if err != nil {
+		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", "Failed to parse request body", err, nil)
+		return c.Status(fiber.StatusBadRequest).JSON(rd)
+	}
+
+	err = base.Validator.Struct(&req)
+	if err != nil {
+		rd := utility.BuildErrorResponse(fiber.StatusUnprocessableEntity, "error", "Validation failed", utility.ValidationResponse(err, base.Validator), nil)
+		return c.Status(fiber.StatusUnprocessableEntity).JSON(rd)
+	}
+
+	createdInvoice, errDetails, err := invoice.CreateInvoice(base.Db.Postgresql.DB(), req, *req.InvoiceNumber, req.BusinessID)
+	if err != nil {
+		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), errDetails, nil)
+		return c.Status(fiber.StatusBadRequest).JSON(rd)
+	}
+
+	respData, err := invoice.SignIRN(req.IRN, base.Keys)
+	if err != nil {
+		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), errDetails, nil)
+		return c.Status(fiber.StatusBadRequest).JSON(rd)
+	}
+
+	response := map[string]string{
+		"invoice_number": createdInvoice.InvoiceNumber,
+		"irn":            createdInvoice.IRN,
+		"qr_code":        respData.QrCodeImage,
+	}
+
+	rd := utility.BuildSuccessResponse(fiber.StatusCreated, "Invoice created successfully", response)
+	return c.Status(fiber.StatusCreated).JSON(rd)
+}
