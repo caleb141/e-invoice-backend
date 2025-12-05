@@ -13,14 +13,6 @@ func RegisterBaseRoutes(app *fiber.App, ApiVersion string) *fiber.App {
 
 	baseGroup := app.Group(fmt.Sprintf("%v", ApiVersion))
 	app.Get("/metrics", adaptor.HTTPHandler(promhttp.Handler()))
-
-	app.Get("/", func(c *fiber.Ctx) error {
-        return c.Status(fiber.StatusOK).JSON(fiber.Map{
-            "status_code": 200,
-            "message":     "E-Invoice Access Point API is running",
-            "status":      "success",
-        })
-    })
 	
 	baseGroup.Get("/", func(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
