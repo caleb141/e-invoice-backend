@@ -26,7 +26,7 @@ func RegisterBaseRoutes(app *fiber.App, ApiVersion string) *fiber.App {
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"status_code": 200,
 			"message":     "Home",
-			"status":      "true",
+			"status":      "false",
 		})
 	})
 
