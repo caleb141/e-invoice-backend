@@ -52,6 +52,13 @@ func main() {
 
 	app := v1.Setup(logger, validatorRef, db, keys)
 
+	app.Get("/", func(c *fiber.Ctx) error {
+	    return c.Status(200).JSON(fiber.Map{
+	        "message": "E-Invoice Access Point API is running",
+	        "status":  "success",
+	    })
+	})
+
 	host := os.Getenv("HOST")
 	port := os.Getenv("PORT")
 
