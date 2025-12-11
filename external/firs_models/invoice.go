@@ -3,7 +3,7 @@ package firs_models
 type InvoiceRequest struct {
 	InvoiceNumber               *string                `json:"invoice_number"`
 	BusinessID                  string                 `json:"business_id"`
-	IRN                         string                 `json:"irn"`
+	IRN                         *string                `json:"irn"`
 	IssueDate                   string                 `json:"issue_date"`
 	DueDate                     *string                `json:"due_date,omitempty"`
 	IssueTime                   *string                `json:"issue_time,omitempty"`

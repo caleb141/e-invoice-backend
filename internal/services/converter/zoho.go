@@ -40,7 +40,7 @@ func ConvertZohoToFIRS(zoho zoho.Invoice, organizationID, organizationName, irn 
 	// Map Zoho invoice to FIRS invoice
 	firsInvoice := firs_models.InvoiceRequest{
 		BusinessID:           organizationID, // Using organization_id as business_id
-		IRN:                  irn,
+		IRN:                  &irn,
 		IssueDate:            zoho.Date,
 		DueDate:              &zoho.DueDate,
 		IssueTime:            &issueTime,
