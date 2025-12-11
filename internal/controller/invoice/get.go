@@ -3,7 +3,9 @@ package invoice
 import (
 	"einvoice-access-point/external/firs_models"
 	"einvoice-access-point/internal/services/invoice"
+	"einvoice-access-point/pkg/middleware"
 	"einvoice-access-point/pkg/utility"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -167,7 +169,7 @@ func (base *Controller) CreateInvoice(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(rd)
 	}
 
-	invoice, errDetails, err := invoice.CreateInvoice(base.Db.Postgresql.DB(), payload, invoiceNumber, businessID)
+	invoice, errDetails, err, _ := invoice.CreateInvoice(base.Db.Postgresql.DB(), payload, invoiceNumber, businessID)
 	if err != nil {
 		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), errDetails, nil)
 		return c.Status(fiber.StatusBadRequest).JSON(rd)
@@ -214,16 +216,21 @@ func (base *Controller) DeleteInvoice(c *fiber.Ctx) error {
 // @Tags Internal Invoice
 // @Accept json
 // @Produce json
-// @Security BearerAuth
+// @Security
 // @Param   payload  body  firs_models.InvoiceRequest  true  "Invoice Payload"
 // @Success 200 {object} models.Response "Invoice created successfully"
 // @Failure 400 {object} models.Response "Bad request"
 // @Router /invoice/upload [post]
 func (base *Controller) UploadInvoice(c *fiber.Ctx) error {
 
+	userDetails, err := middleware.GetUserDetails(c)
+	if err != nil {
+		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", "unable to get user claims", nil, nil)
+		return c.Status(fiber.StatusBadRequest).JSON(rd)
+	}
 	var req firs_models.InvoiceRequest
 
-	err := c.BodyParser(&req)
+	err = c.BodyParser(&req)
 	if err != nil {
 		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", "Failed to parse request body", err, nil)
 		return c.Status(fiber.StatusBadRequest).JSON(rd)
@@ -235,22 +242,65 @@ func (base *Controller) UploadInvoice(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusUnprocessableEntity).JSON(rd)
 	}
 
-	createdInvoice, errDetails, err := invoice.CreateInvoice(base.Db.Postgresql.DB(), req, *req.InvoiceNumber, req.BusinessID)
-	if err != nil {
-		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), errDetails, nil)
-		return c.Status(fiber.StatusBadRequest).JSON(rd)
+	irnPayload := make(map[string]string)
+	if req.InvoiceNumber != nil {
+		irnPayload["invoice_number"] = *req.InvoiceNumber
 	}
 
-	respData, err := invoice.SignIRN(req.IRN, base.Keys)
-	if err != nil {
-		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), errDetails, nil)
-		return c.Status(fiber.StatusBadRequest).JSON(rd)
+	if req.IRN == nil {
+		generatedIRN, err := invoice.GenerateIRN(*req.InvoiceNumber, userDetails.ServiceID)
+		if err != nil {
+			rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), err, nil)
+			return c.Status(fiber.StatusBadRequest).JSON(rd)
+		}
+
+		_, _, err = invoice.ValidateIRN(firs_models.IRNValidationRequest{
+			InvoiceReference: *req.InvoiceNumber,
+			BusinessID:       req.BusinessID,
+			IRN:              *generatedIRN,
+		})
+		if err != nil {
+			rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), err, nil)
+			return c.Status(fiber.StatusBadRequest).JSON(rd)
+		}
+
+		keys, err := utility.LoadCryptoKeys("crypto_keys.txt")
+		if err != nil {
+			rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), err, nil)
+			return c.Status(fiber.StatusBadRequest).JSON(rd)
+		}
+
+		signedIRNResponse, err := invoice.SignIRN(*generatedIRN, keys)
+		if err != nil {
+			rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), err, nil)
+			return c.Status(fiber.StatusBadRequest).JSON(rd)
+		}
+		irnPayload["irn"] = *generatedIRN
+		irnPayload["qr_code"] = signedIRNResponse.QrCodeImage
+	} else {
+		irnPayload["irn"] = *req.IRN
 	}
 
-	response := map[string]string{
-		"invoice_number": createdInvoice.InvoiceNumber,
-		"irn":            createdInvoice.IRN,
-		"qr_code":        respData.QrCodeImage,
+	value := irnPayload["irn"]
+	req.IRN = &value
+
+	createdInvoice, _, err, isInvoiceSigned := invoice.CreateInvoice(base.Db.Postgresql.DB(), req, *req.InvoiceNumber, userDetails.ID)
+
+	response := map[string]interface{}{
+		"metadata": createdInvoice.StatusHistory,
+	}
+	if isInvoiceSigned {
+		response["data"] = map[string]string{
+			"invoice_number": irnPayload["invoice_number"],
+			"irn":            irnPayload["irn"],
+			"qr_code":        irnPayload["qr_code"],
+		}
+	}
+
+	if err != nil {
+		errorArray := strings.Split(err.Error(), "-")
+		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", errorArray[len(errorArray)-1], response, nil)
+		return c.Status(fiber.StatusBadRequest).JSON(rd)
 	}
 
 	rd := utility.BuildSuccessResponse(fiber.StatusCreated, "Invoice created successfully", response)
