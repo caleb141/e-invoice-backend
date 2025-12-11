@@ -68,6 +68,7 @@ func (base *Controller) DownloadInvoice(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
+// @Hidden
 // GetAllInvoicesByBusinessID godoc
 // @Summary Get all invoices by business ID
 // @Description Returns a list of invoices with minimal details for a business
@@ -96,6 +97,7 @@ func (base *Controller) GetAllInvoicesByBusinessID(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
+// @Hidden
 // GetInvoiceDetails godoc
 // @Summary Get one invoice details
 // @Description Returns full invoice details by business ID and invoice ID
@@ -127,6 +129,7 @@ func (base *Controller) GetInvoiceDetails(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
+// @Hidden
 // CreateInvoice godoc
 // @Summary Create a new Invoice
 // @Description Upload a JSON invoice file and store it in DB
@@ -179,6 +182,7 @@ func (base *Controller) CreateInvoice(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusCreated).JSON(rd)
 }
 
+// @Hidden
 // DeleteInvoice godoc
 // @Summary Delete Invoice
 // @Description Deletes an invoice by business_id and invoice_id
