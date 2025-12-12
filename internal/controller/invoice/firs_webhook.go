@@ -8,17 +8,17 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// FirsWebhook godoc
-// @Summary      FIRS Webhook Receiver
-// @Description  Receives webhook events from FIRS (e.g., IRN status updates).
-// @Tags         Webhooks
-// @Accept       json
-// @Produce      json
-// @Param        payload  body      firs_models.FirsWebhookPayload  true  "FIRS Webhook Payload"
-// @Success      200      {object}  models.Response  "Webhook processed successfully"
-// @Failure      400      {object}  models.Response  "Bad request - invalid body or processing error"
-// @Failure      422      {object}  models.Response  "Validation failed"
-// @Router       /webhook/firs [post]
+// // FirsWebhook godoc
+// // @Summary      FIRS Webhook Receiver
+// // @Description  Receives webhook events from FIRS (e.g., IRN status updates).
+// // @Tags         Webhooks
+// // @Accept       json
+// // @Produce      json
+// // @Param        payload  body      firs_models.FirsWebhookPayload  true  "FIRS Webhook Payload"
+// // @Success      200      {object}  models.Response  "Webhook processed successfully"
+// // @Failure      400      {object}  models.Response  "Bad request - invalid body or processing error"
+// // @Failure      422      {object}  models.Response  "Validation failed"
+// // @Router       /webhook/firs [post]
 func (base *Controller) FirsWebhook(c *fiber.Ctx) error {
 	var req firs_models.FirsWebhookPayload
 

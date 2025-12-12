@@ -16,17 +16,17 @@ type Controller struct {
 	Logger    *utility.Logger
 }
 
-// @Summary      Get All Businesses
-// @Description  Retrieve a list of all businesses in the system
-// @Tags         Business
-// @Accept       json
-// @Produce      json
-// @Security BearerAuth
-// @Success      200 {object} models.Response "Businesses retrieved successfully"
-// @Failure      400 {object} models.Response "Bad request"
-// @Failure      401 {object} models.Response "Unauthorized"
-// @Failure      500 {object} models.Response "Internal server error"
-// @Router       /business [get]
+// // @Summary      Get All Businesses
+// // @Description  Retrieve a list of all businesses in the system
+// // @Tags         Business
+// // @Accept       json
+// // @Produce      json
+// // @Security BearerAuth
+// // @Success      200 {object} models.Response "Businesses retrieved successfully"
+// // @Failure      400 {object} models.Response "Bad request"
+// // @Failure      401 {object} models.Response "Unauthorized"
+// // @Failure      500 {object} models.Response "Internal server error"
+// // @Router       /business [get]
 func (base *Controller) GetAllBusiness(c *fiber.Ctx) error {
 	businesses, err := business.GetAllBusinesses(base.Db.Postgresql.DB())
 	if err != nil {
@@ -38,19 +38,19 @@ func (base *Controller) GetAllBusiness(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// @Summary      Get Business by ID
-// @Description  Retrieve details of a specific business using its ID
-// @Tags         Business
-// @Accept       json
-// @Produce      json
-// @Security BearerAuth
-// @Param        id   path      string  true  "Business ID" format(uuid)
-// @Success      200 {object} models.Response "Business retrieved successfully"
-// @Failure      400 {object} models.Response "Bad request"
-// @Failure      401 {object} models.Response "Unauthorized"
-// @Failure      404 {object} models.Response "Business not found"
-// @Failure      500 {object} models.Response "Internal server error"
-// @Router       /business/{id} [get]
+// //@Summary      Get Business by ID
+// //@Description  Retrieve details of a specific business using its ID
+// //@Tags         Business
+// //@Accept       json
+// //@Produce      json
+// //@Security BearerAuth
+// //@Param        id   path      string  true  "Business ID" format(uuid)
+// //@Success      200 {object} models.Response "Business retrieved successfully"
+// //@Failure      400 {object} models.Response "Bad request"
+// //@Failure      401 {object} models.Response "Unauthorized"
+// //@Failure      404 {object} models.Response "Business not found"
+// //@Failure      500 {object} models.Response "Internal server error"
+// //@Router       /business/{id} [get]
 func (base *Controller) GetBusinessByID(c *fiber.Ctx) error {
 	id := c.Params("id")
 

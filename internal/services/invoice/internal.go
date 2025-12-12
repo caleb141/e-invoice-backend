@@ -7,6 +7,7 @@ import (
 	"einvoice-access-point/pkg/models"
 	"encoding/json"
 	"fmt"
+	"log"
 	"time"
 
 	"gorm.io/gorm"
@@ -29,6 +30,7 @@ func CreateInvoice(db *gorm.DB, payload firs_models.InvoiceRequest, invoiceNumbe
 	pdb := inst.InitDB(db, true)
 	isInvoiceSigned := false
 
+	log.Println("fdgfsdasf")
 	invoiceData, err := json.Marshal(payload)
 	if err != nil {
 		errDetails := "failed to marshal invoice data"
@@ -42,7 +44,6 @@ func CreateInvoice(db *gorm.DB, payload firs_models.InvoiceRequest, invoiceNumbe
 	}
 
 	platformMetadata := "{}"
-
 	invoice := &models.Invoice{
 		InvoiceNumber:    invoiceNumber,
 		IRN:              *payload.IRN,
@@ -54,6 +55,7 @@ func CreateInvoice(db *gorm.DB, payload firs_models.InvoiceRequest, invoiceNumbe
 		StatusHistory:    statusHistory,
 		Timestamp:        time.Now(),
 	}
+	log.Println(invoice)
 
 	if err := repository.CreateInvoice(pdb, invoice); err != nil {
 		errDetails := "failed to save invoice"

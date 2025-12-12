@@ -17,18 +17,18 @@ type Controller struct {
 	Keys      *utility.CryptoKeys
 }
 
-// ValidateIRN godoc
-// @Summary Validate IRN
-// @Description Validates an Invoice Reference Number (IRN).
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param request body firs_models.IRNValidationRequest true "IRN Validation Request"
-// @Success 200 {object} models.Response "IRN validated successfully"
-// @Failure 400 {object} models.Response "Bad request"
-// @Failure 422 {object} models.Response "Validation failed"
-// @Router /invoice/validate-irn [post]
+// // ValidateIRN godoc
+// // @Summary Validate IRN
+// // @Description Validates an Invoice Reference Number (IRN).
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param request body firs_models.IRNValidationRequest true "IRN Validation Request"
+// // @Success 200 {object} models.Response "IRN validated successfully"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Failure 422 {object} models.Response "Validation failed"
+// // @Router /invoice/validate-irn [post]
 func (base *Controller) ValidateIRN(c *fiber.Ctx) error {
 	var req firs_models.IRNValidationRequest
 
@@ -55,18 +55,18 @@ func (base *Controller) ValidateIRN(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// ValidateInvoice godoc
-// @Summary Validate Invoice
-// @Description Validates an invoice payload.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param request body firs_models.InvoiceRequest true "Invoice Request"
-// @Success 200 {object} models.Response "Invoice validated successfully"
-// @Failure 400 {object} models.Response "Bad request"
-// @Failure 422 {object} models.Response "Validation failed"
-// @Router /invoice/validate [post]
+// // ValidateInvoice godoc
+// // @Summary Validate Invoice
+// // @Description Validates an invoice payload.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param request body firs_models.InvoiceRequest true "Invoice Request"
+// // @Success 200 {object} models.Response "Invoice validated successfully"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Failure 422 {object} models.Response "Validation failed"
+// // @Router /invoice/validate [post]
 func (base *Controller) ValidateInvoice(c *fiber.Ctx) error {
 	var req firs_models.InvoiceRequest
 
