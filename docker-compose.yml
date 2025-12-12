@@ -7,9 +7,9 @@ services:
     ports:
       - "5433:5432"  # expose PostgreSQL on 5433 externally
     environment:
-      POSTGRES_DB: tbl_einvoice_access
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: einvoice_db
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: gentionGlobal11%
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
