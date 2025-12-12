@@ -29,19 +29,19 @@ func (base *Controller) ZohoAuthCode(c *fiber.Ctx) error {
 	return c.Redirect(authURL)
 }
 
-// @Summary      Get Zoho Access Token
-// @Description  Exchange an authorization code for a Zoho access token and save it to the database.
-// @Tags         Zoho
-// @Accept       json
-// @Produce      json
-// @Param        code            query   string  true  "Authorization Code returned from Zoho OAuth"
-// @Param        organisation_id query   string  true  "Zoho Organization ID"
-// @Security     BearerAuth
-// @Success      200 {object} models.Response "Token generated successfully"
-// @Failure      400 {object} models.Response "Bad request (missing code or organisation_id)"
-// @Failure      401 {object} models.Response "Unauthorized"
-// @Failure      500 {object} models.Response "Internal server error"
-// @Router       /zoho/auth/access-token [get]
+// // @Summary      Get Zoho Access Token
+// // @Description  Exchange an authorization code for a Zoho access token and save it to the database.
+// // @Tags         Zoho
+// // @Accept       json
+// // @Produce      json
+// // @Param        code            query   string  true  "Authorization Code returned from Zoho OAuth"
+// // @Param        organisation_id query   string  true  "Zoho Organization ID"
+// // @Security     BearerAuth
+// // @Success      200 {object} models.Response "Token generated successfully"
+// // @Failure      400 {object} models.Response "Bad request (missing code or organisation_id)"
+// // @Failure      401 {object} models.Response "Unauthorized"
+// // @Failure      500 {object} models.Response "Internal server error"
+// // @Router       /zoho/auth/access-token [get]
 func (base *Controller) ZohoGetAcessToken(c *fiber.Ctx) error {
 
 	platform := "zoho"

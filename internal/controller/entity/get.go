@@ -16,18 +16,18 @@ type Controller struct {
 	Logger    *utility.Logger
 }
 
-// @Summary      Get Entities
-// @Description  Retrieve a paginated list of entities
-// @Tags         Entity
-// @Accept       json
-// @Produce      json
-// @Security     BearerAuth
-// @Param        query  query     models.PaginationQuery  false  "Pagination and sorting"
-// @Success      200 {object} models.Response "Entities retrieved successfully"
-// @Failure      400 {object} models.Response "Bad request"
-// @Failure      401 {object} models.Response "Unauthorized"
-// @Failure      500 {object} models.Response "Internal server error"
-// @Router       /entity [get]
+// // @Summary      Get Entities
+// // @Description  Retrieve a paginated list of entities
+// // @Tags         Entity
+// // @Accept       json
+// // @Produce      json
+// // @Security     BearerAuth
+// // @Param        query  query     models.PaginationQuery  false  "Pagination and sorting"
+// // @Success      200 {object} models.Response "Entities retrieved successfully"
+// // @Failure      400 {object} models.Response "Bad request"
+// // @Failure      401 {object} models.Response "Unauthorized"
+// // @Failure      500 {object} models.Response "Internal server error"
+// // @Router       /entity [get]
 func (base *Controller) GetEntities(c *fiber.Ctx) error {
 	var query models.PaginationQuery
 	if err := c.QueryParser(&query); err != nil {
@@ -48,19 +48,19 @@ func (base *Controller) GetEntities(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// @Summary      Get Entity by ID
-// @Description  Retrieve details of a specific entity using its ID
-// @Tags         Entity
-// @Accept       json
-// @Produce      json
-// @Security     BearerAuth
-// @Param        entity_id   path      string  true  "Entity ID"
-// @Success      200 {object} models.Response "Entity retrieved successfully"
-// @Failure      400 {object} models.Response "Bad request"
-// @Failure      401 {object} models.Response "Unauthorized"
-// @Failure      404 {object} models.Response "Entity not found"
-// @Failure      500 {object} models.Response "Internal server error"
-// @Router       /entity/{entity_id} [get]
+// // @Summary      Get Entity by ID
+// // @Description  Retrieve details of a specific entity using its ID
+// // @Tags         Entity
+// // @Accept       json
+// // @Produce      json
+// // @Security     BearerAuth
+// // @Param        entity_id   path      string  true  "Entity ID"
+// // @Success      200 {object} models.Response "Entity retrieved successfully"
+// // @Failure      400 {object} models.Response "Bad request"
+// // @Failure      401 {object} models.Response "Unauthorized"
+// // @Failure      404 {object} models.Response "Entity not found"
+// // @Failure      500 {object} models.Response "Internal server error"
+// // @Router       /entity/{entity_id} [get]
 func (base *Controller) GetEntity(c *fiber.Ctx) error {
 	entityId := c.Params("entity_id")
 	if entityId == "" {

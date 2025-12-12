@@ -8,17 +8,17 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// LookUpIRN godoc
-// @Summary Look Up IRN
-// @Description Retrieves invoice details using the IRN.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param irn path string true "Invoice Reference Number (IRN)"
-// @Success 200 {object} models.Response "Invoice details retrieved"
-// @Failure 400 {object} models.Response "Bad request"
-// @Router /invoice/transmit/lookup-irn/{irn} [get]
+// // LookUpIRN godoc
+// // @Summary Look Up IRN
+// // @Description Retrieves invoice details using the IRN.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param irn path string true "Invoice Reference Number (IRN)"
+// // @Success 200 {object} models.Response "Invoice details retrieved"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Router /invoice/transmit/lookup-irn/{irn} [get]
 func (base *Controller) LookUpIRN(c *fiber.Ctx) error {
 	irn := c.Params("irn")
 	if irn == "" {
@@ -37,17 +37,17 @@ func (base *Controller) LookUpIRN(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// LookUpTIN godoc
-// @Summary Look Up TIN
-// @Description Retrieves taxpayer details using TIN.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param tin path string true "Tax Identification Number (TIN)"
-// @Success 200 {object} models.Response "TIN details retrieved"
-// @Failure 400 {object} models.Response "Bad request"
-// @Router /invoice/transmit/lookup-tin/{tin} [get]
+// // LookUpTIN godoc
+// // @Summary Look Up TIN
+// // @Description Retrieves taxpayer details using TIN.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param tin path string true "Tax Identification Number (TIN)"
+// // @Success 200 {object} models.Response "TIN details retrieved"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Router /invoice/transmit/lookup-tin/{tin} [get]
 func (base *Controller) LookUpTIN(c *fiber.Ctx) error {
 	tin := c.Params("tin")
 	if tin == "" {
@@ -66,17 +66,17 @@ func (base *Controller) LookUpTIN(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// LookUpPartyID godoc
-// @Summary Look Up Party ID
-// @Description Retrieves details using Party ID.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param party_id path string true "Party ID"
-// @Success 200 {object} models.Response "Party ID details retrieved"
-// @Failure 400 {object} models.Response "Bad request"
-// @Router /invoice/transmit/lookup-party/{party_id} [get]
+// // LookUpPartyID godoc
+// // @Summary Look Up Party ID
+// // @Description Retrieves details using Party ID.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param party_id path string true "Party ID"
+// // @Success 200 {object} models.Response "Party ID details retrieved"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Router /invoice/transmit/lookup-party/{party_id} [get]
 func (base *Controller) LookUpPartyID(c *fiber.Ctx) error {
 	partyId := c.Params("party_id")
 	if partyId == "" {
@@ -95,17 +95,17 @@ func (base *Controller) LookUpPartyID(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// TransmitInvoice godoc
-// @Summary Transmit Invoice
-// @Description Transmits an invoice to FIRS using the IRN.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param irn path string true "Invoice Reference Number (IRN)"
-// @Success 200 {object} models.Response "Invoice transmitted successfully"
-// @Failure 400 {object} models.Response "Bad request"
-// @Router /invoice/transmit/{irn} [post]
+// // TransmitInvoice godoc
+// // @Summary Transmit Invoice
+// // @Description Transmits an invoice to FIRS using the IRN.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param irn path string true "Invoice Reference Number (IRN)"
+// // @Success 200 {object} models.Response "Invoice transmitted successfully"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Router /invoice/transmit/{irn} [post]
 func (base *Controller) TransmitInvoice(c *fiber.Ctx) error {
 	irn := c.Params("irn")
 	if irn == "" {
@@ -153,17 +153,17 @@ func (base *Controller) TransmitConfirmInvoice(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// TransmitPull godoc
-// @Summary Pull Transmitted Invoices
-// @Description Pulls invoices from FIRS using query params.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param query query models.PullDataQuery true "Query Parameters"
-// @Success 200 {object} models.Response "Invoices pulled successfully"
-// @Failure 400 {object} models.Response "Invalid query parameters"
-// @Router /invoice/transmit/pull [get]
+// // TransmitPull godoc
+// // @Summary Pull Transmitted Invoices
+// // @Description Pulls invoices from FIRS using query params.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param query query models.PullDataQuery true "Query Parameters"
+// // @Success 200 {object} models.Response "Invoices pulled successfully"
+// // @Failure 400 {object} models.Response "Invalid query parameters"
+// // @Router /invoice/transmit/pull [get]
 func (base *Controller) TransmitPull(c *fiber.Ctx) error {
 
 	var query models.PullDataQuery
@@ -184,16 +184,16 @@ func (base *Controller) TransmitPull(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// DebugHealthCheck godoc
-// @Summary Debug Health Check
-// @Description Performs a debug health check on invoice transmission service.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Success 200 {object} models.Response "Health check successful"
-// @Failure 400 {object} models.Response "Bad request"
-// @Router /invoice/transmit/health-check [get]
+// // DebugHealthCheck godoc
+// // @Summary Debug Health Check
+// // @Description Performs a debug health check on invoice transmission service.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Success 200 {object} models.Response "Health check successful"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Router /invoice/transmit/health-check [get]
 func (base *Controller) DebugHealthCheck(c *fiber.Ctx) error {
 
 	respData, errDetails, err := invoice.DebugHealthCheck()

@@ -8,19 +8,19 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// UpdateInvoice godoc
-// @Summary Update Invoice
-// @Description Updates an existing invoice using the IRN.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param irn path string true "Invoice Reference Number (IRN)"
-// @Param request body firs_models.UpdateInvoice true "Update Invoice Request"
-// @Success 200 {object} models.Response "Invoice updated successfully"
-// @Failure 400 {object} models.Response "Bad request"
-// @Failure 422 {object} models.Response "Validation failed"
-// @Router /invoice/update/{irn} [patch]
+// // UpdateInvoice godoc
+// // @Summary Update Invoice
+// // @Description Updates an existing invoice using the IRN.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param irn path string true "Invoice Reference Number (IRN)"
+// // @Param request body firs_models.UpdateInvoice true "Update Invoice Request"
+// // @Success 200 {object} models.Response "Invoice updated successfully"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Failure 422 {object} models.Response "Validation failed"
+// // @Router /invoice/update/{irn} [patch]
 func (base *Controller) UpdateInvoice(c *fiber.Ctx) error {
 	irn := c.Params("irn")
 	if irn == "" {

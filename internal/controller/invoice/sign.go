@@ -9,18 +9,18 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// SignIRN godoc
-// @Summary Sign IRN
-// @Description Signs an IRN and generates a QR code.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param request body firs_models.IRNSigningRequestData true "IRN Signing Request"
-// @Success 200 {object} models.Response "IRN signed successfully"
-// @Failure 400 {object} models.Response "Bad request"
-// @Failure 422 {object} models.Response "Validation failed"
-// @Router /invoice/sign-irn [post]
+// // SignIRN godoc
+// // @Summary Sign IRN
+// // @Description Signs an IRN and generates a QR code.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param request body firs_models.IRNSigningRequestData true "IRN Signing Request"
+// // @Success 200 {object} models.Response "IRN signed successfully"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Failure 422 {object} models.Response "Validation failed"
+// // @Router /invoice/sign-irn [post]
 func (base *Controller) SignIRN(c *fiber.Ctx) error {
 	var req firs_models.IRNSigningRequestData
 
@@ -47,18 +47,18 @@ func (base *Controller) SignIRN(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(rd)
 }
 
-// SignInvoice godoc
-// @Summary Sign Invoice
-// @Description Signs an invoice and generates a digital signature.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param request body firs_models.InvoiceRequest true "Invoice Request"
-// @Success 201 {object} models.Response "Invoice signed successfully"
-// @Failure 400 {object} models.Response "Bad request"
-// @Failure 422 {object} models.Response "Validation failed"
-// @Router /invoice/sign [post]
+// // SignInvoice godoc
+// // @Summary Sign Invoice
+// // @Description Signs an invoice and generates a digital signature.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param request body firs_models.InvoiceRequest true "Invoice Request"
+// // @Success 201 {object} models.Response "Invoice signed successfully"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Failure 422 {object} models.Response "Validation failed"
+// // @Router /invoice/sign [post]
 func (base *Controller) SignInvoice(c *fiber.Ctx) error {
 	var req firs_models.InvoiceRequest
 
@@ -85,18 +85,18 @@ func (base *Controller) SignInvoice(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusCreated).JSON(rd)
 }
 
-// GenerateIRN godoc
-// @Summary Generate IRN
-// @Description Generates a new IRN for an invoice.
-// @Tags Invoice
-// @Accept json
-// @Produce json
-// @Security BearerAuth
-// @Param request body firs_models.GenerateIRNRequestData true "Generate IRN Request"
-// @Success 200 {object} models.Response "IRN generated successfully"
-// @Failure 400 {object} models.Response "Bad request"
-// @Failure 422 {object} models.Response "Validation failed"
-// @Router /invoice/generate-irn [post]
+// // GenerateIRN godoc
+// // @Summary Generate IRN
+// // @Description Generates a new IRN for an invoice.
+// // @Tags Invoice
+// // @Accept json
+// // @Produce json
+// // @Security BearerAuth
+// // @Param request body firs_models.GenerateIRNRequestData true "Generate IRN Request"
+// // @Success 200 {object} models.Response "IRN generated successfully"
+// // @Failure 400 {object} models.Response "Bad request"
+// // @Failure 422 {object} models.Response "Validation failed"
+// // @Router /invoice/generate-irn [post]
 func (base *Controller) GenerateIRN(c *fiber.Ctx) error {
 	var req firs_models.GenerateIRNRequestData
 
