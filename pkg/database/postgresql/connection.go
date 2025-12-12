@@ -26,25 +26,26 @@ func ConnectToDatabase(logger *utility.Logger, configDatabases config.Database) 
 }
 
 func connectToDb(host, user, password, dbname, port, sslmode, timezone string, logger *utility.Logger) *gorm.DB {
-    port = database.ResolvePortParsing(port, logger)
-    dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v TimeZone=%v sslmode=disable",
-        host, user, password, dbname, port, timezone)
+	port = database.ResolvePortParsing(port, logger)
+	sslRootCertPath := "ca.crt"
+	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=%v sslrootcert=%v TimeZone=%v", host, user, password, dbname, port, sslmode, sslRootCertPath, timezone)
+	newLogger := lg.New(
+		log.New(os.Stdout, "\r\n", log.LstdFlags),
+		lg.Config{
+			LogLevel:                  lg.Error,
+			IgnoreRecordNotFoundError: true,
+			Colorful:                  true,
+		},
+	)
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+		Logger: newLogger,
+	})
+	if err != nil {
+		utility.LogAndPrint(logger, fmt.Sprintf("connection to %v db failed with: %v", dbname, err))
+		panic(err)
 
-    newLogger := lg.New(
-        log.New(os.Stdout, "\r\n", log.LstdFlags),
-        lg.Config{
-            LogLevel:                  lg.Error,
-            IgnoreRecordNotFoundError: true,
-            Colorful:                  true,
-        },
-    )
-    db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
-        Logger: newLogger,
-    })
-    if err != nil {
-        utility.LogAndPrint(logger, fmt.Sprintf("connection to %v db failed with: %v", dbname, err))
-        panic(err)
-    }
-    utility.LogAndPrint(logger, fmt.Sprintf("connected to %v db", dbname))
-    return db
+	}
+	utility.LogAndPrint(logger, fmt.Sprintf("connected to %v db", dbname))
+	// db = db.Debug() //database debug mode
+	return db
 }
