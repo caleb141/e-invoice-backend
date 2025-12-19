@@ -44,7 +44,7 @@ const docTemplate = `{
                     "200": {
                         "description": "Login successfully",
                         "schema": {
-                            "$ref": "#/definitions/models.Response"
+                            "$ref": "#/definitions/models.LoginResponse"
                         }
                     },
                     "400": {
@@ -95,6 +95,62 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "user logout successfully",
+                        "schema": {
+                            "$ref": "#/definitions/models.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request, validation failed",
+                        "schema": {
+                            "$ref": "#/definitions/models.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/models.Response"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity",
+                        "schema": {
+                            "$ref": "#/definitions/models.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/models.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Complete forgot password process",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Complete Forgot Password",
+                "parameters": [
+                    {
+                        "description": "Complete forgot password request payload",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CompleteForgotPassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "forgot password complete successfully",
                         "schema": {
                             "$ref": "#/definitions/models.Response"
                         }
@@ -800,14 +856,40 @@ const docTemplate = `{
                 }
             }
         },
-        "models.CreateUserRequestModel": {
+        "models.CompleteForgotPassword": {
             "type": "object",
             "required": [
                 "email",
-                "name",
+                "otp",
                 "password"
             ],
             "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "otp": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 6
+                }
+            }
+        },
+        "models.CreateUserRequestModel": {
+            "type": "object",
+            "required": [
+                "company_name",
+                "email",
+                "name",
+                "password",
+                "phone_number",
+                "tin"
+            ],
+            "properties": {
+                "company_name": {
+                    "type": "string"
+                },
                 "email": {
                     "type": "string"
                 },
@@ -820,8 +902,25 @@ const docTemplate = `{
                     "type": "string",
                     "minLength": 6
                 },
+                "phone_number": {
+                    "type": "string"
+                },
                 "platform_configs": {
                     "$ref": "#/definitions/models.PlatformConfigsAuth"
+                },
+                "tin": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.InitiateForgotPassword": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
                 }
             }
         },
@@ -836,6 +935,29 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "business_id": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "service_id": {
+                    "type": "string"
+                },
+                "tin": {
                     "type": "string"
                 }
             }
