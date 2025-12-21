@@ -147,7 +147,7 @@ func (base *Controller) Logout(c *fiber.Ctx) error {
 // @Failure 401 {object} models.Response "Unauthorized"
 // @Failure 422 {object} models.Response "Unprocessable entity"
 // @Failure 500 {object} models.Response "Internal server error"
-// @Router /auth/logout [post]
+// @Router /auth/initiate-forgot-password [post]
 func (base *Controller) InitiateForgotPassword(c *fiber.Ctx) error {
 	var req models.InitiateForgotPassword
 	err := c.BodyParser(&req)
@@ -185,7 +185,7 @@ func (base *Controller) InitiateForgotPassword(c *fiber.Ctx) error {
 // @Failure 401 {object} models.Response "Unauthorized"
 // @Failure 422 {object} models.Response "Unprocessable entity"
 // @Failure 500 {object} models.Response "Internal server error"
-// @Router /auth/logout [post]
+// @Router /auth/complete-forgot-password [post]
 func (base *Controller) CompleteForgotPassword(c *fiber.Ctx) error {
 	var req models.CompleteForgotPassword
 	err := c.BodyParser(&req)
