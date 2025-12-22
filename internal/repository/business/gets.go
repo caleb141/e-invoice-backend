@@ -107,6 +107,7 @@ func FindBusinessByID(db database.DatabaseManager, id string) (*models.Business,
 	}
 
 	if err := business.APIKey.AfterFind(db.DB()); err != nil {
+		fmt.Println(err)
 		return nil, fmt.Errorf("failed to decrypt API key for business %s: %w", business.ID, err)
 	}
 
