@@ -30,7 +30,7 @@ type StatusHistoryEntry struct {
 // Invoice represents an invoice with support for multiple accounting platforms
 type Invoice struct {
 	ID               string         `gorm:"type:uuid;primaryKey;unique;not null" json:"id"`
-	InvoiceNumber    string         `gorm:"column:invoice_number;type:varchar(50);not null;unique;index" json:"invoice_number"`
+	InvoiceNumber    string         `gorm:"column:invoice_number;type:varchar(50);not null;index" json:"invoice_number"`
 	IRN              string         `gorm:"column:irn;type:varchar(50);null" json:"irn"`
 	BusinessID       string         `gorm:"column:business_id;type:uuid;not null" json:"business_id"`
 	Platform         string         `gorm:"column:platform;type:varchar(20);not null" json:"platform"` // e.g., zoho, quickbooks

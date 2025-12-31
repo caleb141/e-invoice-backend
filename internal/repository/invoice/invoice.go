@@ -49,6 +49,15 @@ func FindInvoiceByNumber(db database.DatabaseManager, invoiceNumber string) (*mo
 	return &invoice, nil
 }
 
+func FindInvoiceByNumberAndBusinessID(db database.DatabaseManager, invoiceNumber string, businessID string) (*models.Invoice, error) {
+	var invoice models.Invoice
+	err := db.DB().Where("invoice_number = ? AND business_id = ?", invoiceNumber, businessID).First(&invoice).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, nil
+	}
+	return &invoice, nil
+}
+
 func UpdateInvoiceStatus(db database.DatabaseManager, invoice *models.Invoice, step string, status string) error {
 	var history []models.StatusHistoryEntry
 

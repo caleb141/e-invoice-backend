@@ -242,6 +242,16 @@ func (base *Controller) UploadInvoice(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusUnprocessableEntity).JSON(rd)
 	}
 
+	invoiceExists, err := invoice.GetInvoiceByInvoiceNumber(base.Db.Postgresql.DB(), *req.InvoiceNumber, userDetails.ID)
+	if err != nil {
+		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", err.Error(), err, nil)
+		return c.Status(fiber.StatusBadRequest).JSON(rd)
+	}
+	if invoiceExists != nil {
+		rd := utility.BuildErrorResponse(fiber.StatusBadRequest, "error", "invoice with the same invoice number already exists", nil, nil)
+		return c.Status(fiber.StatusBadRequest).JSON(rd)
+	}
+
 	irnPayload := make(map[string]string)
 	if req.InvoiceNumber != nil {
 		irnPayload["invoice_number"] = *req.InvoiceNumber

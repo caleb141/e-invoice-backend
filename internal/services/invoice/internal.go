@@ -72,3 +72,8 @@ func DeleteInvoice(db *gorm.DB, businessID, invoiceID string) error {
 	pdb := inst.InitDB(db, true)
 	return repository.DeleteInvoiceByBusinessAndID(pdb, businessID, invoiceID)
 }
+
+func GetInvoiceByInvoiceNumber(db *gorm.DB, invoiceNumber, businessID string) (*models.Invoice, error) {
+	pdb := inst.InitDB(db, true)
+	return repository.FindInvoiceByNumberAndBusinessID(pdb, invoiceNumber, businessID)
+}
